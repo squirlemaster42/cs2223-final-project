@@ -25,6 +25,12 @@ public class HashTable<T>{
         readText(title);
     }
 
+
+    /**
+     * searches for a given string in the hashmap and deletes if it exists
+     * @param s the string you are looking to delete
+     */
+
     public void delete(String s){
         int address = hash(s);
         boolean contains = hashTable[s].contains(s);
