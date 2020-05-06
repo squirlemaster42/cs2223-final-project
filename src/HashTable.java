@@ -25,6 +25,19 @@ public class HashTable<T>{
         readText(title);
     }
 
+    public void delete(String s){
+        int address = hash(s);
+        boolean contains = hashTable[s].contains(s);
+        if(contains){
+            this.hashTable[s].remove(s);
+        }
+        else{
+            System.out.println("Item you tried to remove is not stored in the Hash Table");
+        }
+    }
+
+}
+
     public void put(String word){
         int index = hash(word);
         for(Object str : hashTable[index]){
