@@ -32,6 +32,7 @@ public class HashTable<T>{
                 return;
             }
         }
+        //TODO Test add first
         hashTable[index].add(word);
     }
 
