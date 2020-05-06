@@ -18,6 +18,7 @@ public class HashTable<T>{
     /**
      *
      * @param title Title of the text to be added to each arrayList. Input as title of the book without the ".txt"
+     * @param size Size of the hash table
      */
     public HashTable(String title, int size){
         hashTable = new LinkedList[size];
@@ -58,24 +59,33 @@ public class HashTable<T>{
      * @param title Title of the book; also name of the corresponding .txt
      * @return An array list of string containing each word of the texts with punctuation (!,?,.,,) removed
      */
-    private ArrayList<String> readText(String title)  {
+    private void readText(String title)  {
         Scanner text = null;
         try {
             text = new Scanner(new BufferedReader(new FileReader(title +".txt")));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        ArrayList<String> output = new ArrayList<String>();
+
         while (text.hasNext()){
             String line = text.nextLine();
             String[] pureLine = line.trim().replaceAll("[^a-zA-Z-']", " ").split(" ");
-            output.addAll(Arrays.asList(pureLine));
+            for(int i = 0; i < pureLine.length; i++){
+                put(pureLine[i]);
+            }
 
         }
-        System.out.println(output);
-        return output;
     }
 
+    /**
+     * Prints the hasTable
+     */
+    public void printTable(){
+        System.out.println("Hash    |||     Word     ");
+        for(int i = 0; i < hashTable.length; i++){
+            System.out.println( i + "     |||    "+hashTable[i]);
+        }
+    }
 
 
 }
