@@ -24,7 +24,7 @@ public class HashTable<T>{
         this.size = size;
         readText(title);
     }
-    
+
     public void put(String word){
         int index = hash(word);
         for(Object str : hashTable[index]){
@@ -67,26 +67,7 @@ public class HashTable<T>{
         ArrayList<String> output = new ArrayList<String>();
         while (text.hasNext()){
             String line = text.nextLine();
-            String[] pureLine = line.split(" ");
-
-            for(int i = 0; i < pureLine.length; i++){
-                if(pureLine[i].contains(".")){
-                    String temp = pureLine[i].substring(0,pureLine[i].indexOf('.'));
-                    pureLine[i] = temp;
-                }
-                if(pureLine[i].contains(",")){
-                    String temp = pureLine[i].substring(0,pureLine[i].indexOf(','));
-                    pureLine[i] = temp;
-                }
-                if(pureLine[i].contains("?")){
-                    String temp = pureLine[i].substring(0,pureLine[i].indexOf('?'));
-                    pureLine[i] = temp;
-                }
-                if(pureLine[i].contains("!")){
-                    String temp = pureLine[i].substring(0,pureLine[i].indexOf('!'));
-                    pureLine[i] = temp;
-                }
-            }
+            String[] pureLine = line.trim().replaceAll("[^a-zA-Z-']", " ").split(" ");
             output.addAll(Arrays.asList(pureLine));
 
         }
