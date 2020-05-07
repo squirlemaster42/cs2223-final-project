@@ -1,12 +1,10 @@
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class HashTable<T>{
+public class HashTable{
     private final LinkedList[] hashTable;
     private final int size;
 
@@ -54,6 +52,10 @@ public class HashTable<T>{
         hashTable[index].add(word);
     }
 
+    public LinkedList get(final int position){
+        return hashTable[position];
+    }
+
     public int hash(String word){
         final int C = 123; //TODO Figure out what to use for C
         int h = 0;
@@ -86,12 +88,16 @@ public class HashTable<T>{
 
         while (text.hasNext()){
             String line = text.nextLine();
-            String[] pureLine = line.trim().replaceAll("[^a-zA-Z-']", " ").split(" ");
+            String[] pureLine = splitLine(line);
             for(int i = 0; i < pureLine.length; i++){
                 put(pureLine[i]);
             }
 
         }
+    }
+
+    String[] splitLine(String line){
+        return line.trim().replaceAll("[^a-zA-Z-' ]", "").split(" ");
     }
 
     /**
