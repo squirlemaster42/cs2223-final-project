@@ -101,7 +101,7 @@ public class HashTable{
     }
 
     /**
-     * Prints the hasTable
+     * Prints the hashTable
      */
     public void printTable(){
         System.out.println("Hash    |||     Word     ");
@@ -110,5 +110,103 @@ public class HashTable{
         }
     }
 
+    /**
+     * finds the most used address in the hash table
+     */
+
+    public void findMostUsedAddress(){
+        int largestList = 0;
+        int largestListLocation = 0;
+        for(int i=0; i<this.size; i++){
+            if(this.hashTable[i].size()>largestList){
+                largestList = this.hashTable[i].size();
+                largestListLocation = i;
+            }
+        }
+        System.out.println("The has address containing the greatest number of distinct words is " + largestListLocation + " and contains " + largestList + " words");
+    }
+
+    /**
+     * finds the longest cluster of items stored in the has table
+     */
+
+    public void findLongestCluster(){
+        int tempCount = 0;
+        int tempLocationStart = 0;
+        int longest = 0;
+        int longestLocationStart = 0;
+        int longestLocationEnd = 0;
+
+        for (int i = 0; i < 1000; i++) {
+            if (this.hashTable[i] == null) {
+                if (longest < tempCount) {
+                    longest = tempCount;
+                    longestLocationStart = tempLocationStart;
+                    longestLocationEnd = i - 1;
+                }
+                tempCount = 0;
+            } else {
+                if (i == 0) {
+                    tempCount++;
+                } else {
+                    if (this.hashTable[i - 1] == null) {
+                        tempLocationStart = i;
+                    }
+                    tempCount++;
+                }
+            }
+        }
+
+        System.out.println("\nc) The longest cluster in the table is " + longest + " and it is between indexes " + longestLocationStart + " and " + longestLocationEnd + " inclusive");
+    }
+
+    /**
+     * counts the number of non-empty addresses and finds the load factor of the hash table
+     */
+
+    public void countAddresses(){
+        int numberOfItems = 0;
+        for(int i=0; i<this.size; i++){
+            if(this.hashTable[i]!=null){
+                numberOfItems++;
+            }
+        }
+        float loadFactor = (float)numberOfItems/this.size;
+        System.out.printf("There are " + numberOfItems + " non-empty addresses in the table. This makes the load factor " + loadFactor);
+    }
+
+    /**
+     * counts the longest empty area in the hash table
+     */
+
+    public void longestEmptyArea(){
+        int tempCount = 0;
+        int tempLocationStart = 0;
+        int longest = 0;
+        int longestLocationStart = 0;
+        int longestLocationEnd = 0;
+
+        for (int i = 0; i < 1000; i++) {               //finds the longest empty area
+            if (this.hashTable[i] != null) {
+                if (longest < tempCount) {
+                    longest = tempCount;
+                    longestLocationStart = tempLocationStart;
+                    longestLocationEnd = i-1;
+                }
+                tempCount = 0;
+            } else {
+                if (i == 0) {
+                    tempCount++;
+                } else {
+                    if (this.hashTable[i - 1] != null) {
+                        tempLocationStart = i;
+                    }
+                    tempCount++;
+                }
+            }
+        }
+
+        System.out.println("The longest empty area in the table is " + longest + " and it is between indexes " + longestLocationStart + " and " + longestLocationEnd + ", inclusive");
+    }
 
 }
