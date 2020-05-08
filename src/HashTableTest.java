@@ -14,21 +14,32 @@ public class HashTableTest {
     @BeforeClass
     public static void readFiles(){
         //TODO Add texts
-        smallText = new HashTable(TABLE_SIZE);
-        elephantChild = new HashTable(TABLE_SIZE);
-        dict = new HashTable(TABLE_SIZE);
-        mobyDick = new HashTable(TABLE_SIZE);
+        smallText = new HashTable("small", TABLE_SIZE);
+        elephantChild = new HashTable("ElephantsChild", TABLE_SIZE);
+        dict = new HashTable("dict", TABLE_SIZE);
+        mobyDick = new HashTable("MobyDick", TABLE_SIZE);
         hash = new HashTable(TABLE_SIZE);
     }
 
     @Test
     public void testPutWord(){
-
+        assertEquals(1, countWord(dict.get(hash.hash("a")), "a"));
+        assertEquals(1, countWord(dict.get(hash.hash("saltus")), "saltus"));
+        assertEquals(1, countWord(dict.get(hash.hash("unembayed")), "unembayed"));
+        assertEquals(1, countWord(dict.get(hash.hash("vet")), "vet"));
+        assertEquals(1, countWord(dict.get(hash.hash("zwitter")), "zwitter"));
     }
 
     @Test
     public void testWordAddedOnce(){
-
+        assertEquals(1, countWord(dict.get(hash.hash("a")), "a"));
+        assertEquals(1, countWord(dict.get(hash.hash("a")), "a"));
+        assertEquals(1, countWord(dict.get(hash.hash("a")), "a"));
+        assertEquals(1, countWord(dict.get(hash.hash("a")), "a"));
+        assertEquals(1, countWord(dict.get(hash.hash("saltus")), "saltus"));
+        assertEquals(1, countWord(dict.get(hash.hash("saltus")), "saltus"));
+        assertEquals(1, countWord(dict.get(hash.hash("saltus")), "saltus"));
+        assertEquals(1, countWord(dict.get(hash.hash("saltus")), "saltus"));
     }
 
     @Test
@@ -45,7 +56,12 @@ public class HashTableTest {
 
     @Test
     public void testDelete(){
-
+        assertEquals(1, countWord(dict.get(hash.hash("a")), "a"));
+        dict.delete("a");
+        assertEquals(0, countWord(dict.get(hash.hash("a")), "a"));
+        assertEquals(1, countWord(dict.get(hash.hash("saltus")), "saltus"));
+        dict.delete("saltus");
+        assertEquals(0, countWord(dict.get(hash.hash("saltus")), "saltus"));
     }
 
     @Test
