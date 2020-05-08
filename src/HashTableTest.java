@@ -56,7 +56,12 @@ public class HashTableTest {
 
     @Test
     public void testDelete(){
-
+        assertEquals(1, countWord(dict.get(hash.hash("a")), "a"));
+        dict.delete("a");
+        assertEquals(0, countWord(dict.get(hash.hash("a")), "a"));
+        assertEquals(1, countWord(dict.get(hash.hash("saltus")), "saltus"));
+        dict.delete("saltus");
+        assertEquals(0, countWord(dict.get(hash.hash("saltus")), "saltus"));
     }
 
     @Test
