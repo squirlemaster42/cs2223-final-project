@@ -43,6 +43,9 @@ public class HashTable{
 
     public void put(String word){
         int index = hash(word);
+        if(hashTable[index] == null){
+            hashTable[index] = new LinkedList();
+        }
         for(Object str : hashTable[index]){
             if(str.equals(word)){
                 return;
