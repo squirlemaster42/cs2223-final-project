@@ -25,6 +25,21 @@ public class HashTable{
     }
 
 
+    public HashTable(String title, int size, boolean withTimer){
+        hashTable = new LinkedList[size];
+        this.size = size;
+        if(withTimer){
+            long startTime = System.currentTimeMillis();
+            readText(title);
+            long endTime = System.currentTimeMillis();
+            System.out.println("It takes a table of size " + size + " " + (endTime-startTime) + " milliseconds to run");
+        }
+        else{
+            readText(title);
+        }
+
+    }
+
     /**
      * searches for a given string in the hashmap and deletes if it exists
      * @param s the string you are looking to delete
@@ -160,7 +175,7 @@ public class HashTable{
             }
         }
 
-        System.out.println("\nc) The longest cluster in the table is " + longest + " and it is between indexes " + longestLocationStart + " and " + longestLocationEnd + " inclusive");
+        System.out.println("The longest cluster in the table is " + longest + " and it is between indexes " + longestLocationStart + " and " + longestLocationEnd + " inclusive");
     }
 
     /**

@@ -1,6 +1,7 @@
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.util.Hashtable;
 import java.util.LinkedList;
 
 import static org.junit.Assert.assertArrayEquals;
@@ -87,4 +88,34 @@ public class HashTableTest {
         }
         return count;
     }
+
+    @Test
+    public void testDiffTableSize(){
+        int tableSizeBase = TABLE_SIZE;
+        int tableSize1 = 999;
+        int tableSize2 = 10000000;
+
+
+        //runTime
+        System.out.println(" |      RunTime       |");
+        System.out.println("< >==================< >");
+        HashTable hashT1 = new HashTable("ElephantsChild", tableSizeBase, true);
+        HashTable hashT2 = new HashTable("ElephantsChild", tableSize1, true);
+        HashTable hashT3 = new HashTable("ElephantsChild", tableSize2, true);
+
+        //emptySpace
+        System.out.println(" |     EmptySpace     |");
+        System.out.println("< >==================< >");
+        hashT1.longestEmptyArea();
+        //hashT2.longestEmptyArea();
+        hashT3.longestEmptyArea();
+
+        //clusters
+        System.out.println(" |      Clusters      |");
+        System.out.println("< >==================< >");
+        hashT1.findLongestCluster();
+        //hashT2.findLongestCluster();
+        hashT3.findLongestCluster();
+    }
+
 }
