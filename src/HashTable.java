@@ -141,7 +141,7 @@ public class HashTable{
         int longestLocationEnd = 0;
 
         for (int i = 0; i < 1000; i++) {
-            if (this.hashTable[i] == null) {
+            if (this.hashTable[i] == null || this.hashTable[i].isEmpty()) {
                 if (longest < tempCount) {
                     longest = tempCount;
                     longestLocationStart = tempLocationStart;
@@ -152,7 +152,7 @@ public class HashTable{
                 if (i == 0) {
                     tempCount++;
                 } else {
-                    if (this.hashTable[i - 1] == null) {
+                    if (this.hashTable[i - 1] == null || this.hashTable[i-1].isEmpty()) {
                         tempLocationStart = i;
                     }
                     tempCount++;
@@ -170,7 +170,7 @@ public class HashTable{
     public void countAddresses(){
         int numberOfItems = 0;
         for(int i=0; i<this.size; i++){
-            if(this.hashTable[i]!=null){
+            if(this.hashTable[i]!=null && !this.hashTable[i].isEmpty()){
                 numberOfItems++;
             }
         }
@@ -190,7 +190,7 @@ public class HashTable{
         int longestLocationEnd = 0;
 
         for (int i = 0; i < 1000; i++) {               //finds the longest empty area
-            if (this.hashTable[i] != null) {
+            if (this.hashTable[i] != null && !this.hashTable[i].isEmpty()) {
                 if (longest < tempCount) {
                     longest = tempCount;
                     longestLocationStart = tempLocationStart;
@@ -201,7 +201,7 @@ public class HashTable{
                 if (i == 0) {
                     tempCount++;
                 } else {
-                    if (this.hashTable[i - 1] != null) {
+                    if (this.hashTable[i - 1] != null && !this.hashTable[i-1].isEmpty()) {
                         tempLocationStart = i;
                     }
                     tempCount++;
