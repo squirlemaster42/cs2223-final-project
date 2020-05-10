@@ -164,9 +164,9 @@ public class HashTable{
         for (int i = 0; i < tableSize; i++) {
             if (this.hashTable[i] == null || this.hashTable[i].isEmpty()) {
                 if (longest < tempCount) {
-                    longest = tempCount;
-                    longestLocationStart = tempLocationStart;
-                    longestLocationEnd = i - 1;
+                        longest = tempCount;
+                        longestLocationStart = tempLocationStart;
+                        longestLocationEnd = i - 1;
                 }
                 tempCount = 0;
             } else {
