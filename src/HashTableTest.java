@@ -106,16 +106,16 @@ public class HashTableTest {
         //emptySpace
         System.out.println(" |     EmptySpace     |");
         System.out.println("< >==================< >");
-        hashT1.longestEmptyArea();
+        hashT1.longestEmptyArea(tableSizeBase);
         //hashT2.longestEmptyArea();
-        hashT3.longestEmptyArea();
+        hashT3.longestEmptyArea(tableSize2);
 
         //clusters
         System.out.println(" |      Clusters      |");
         System.out.println("< >==================< >");
-        hashT1.findLongestCluster();
+        hashT1.findLongestCluster(tableSizeBase);
         //hashT2.findLongestCluster();
-        hashT3.findLongestCluster();
+        hashT3.findLongestCluster(tableSize2);
     }
 
 }

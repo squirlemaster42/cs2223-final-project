@@ -47,9 +47,13 @@ public class HashTable{
 
     public void delete(String s){
         int address = hash(s);
-        boolean contains = hashTable[hash(s)].contains(s);
+        if(this.hashTable[address]==null){
+            System.out.println("Item you tried to remove is not stored in the Hash Table");
+            return;
+        }
+        boolean contains = this.hashTable[address].contains(s);
         if(contains){
-            this.hashTable[hash(s)].remove(s);
+            this.hashTable[address].remove(s);
         }
         else{
             System.out.println("Item you tried to remove is not stored in the Hash Table");
@@ -132,13 +136,15 @@ public class HashTable{
      * finds the most used address in the hash table
      */
 
-    public void findMostUsedAddress(){
+    public void findMostUsedAddress(int tableSize){
         int largestList = 0;
         int largestListLocation = 0;
-        for(int i=0; i<this.size; i++){
-            if(this.hashTable[i].size()>largestList){
-                largestList = this.hashTable[i].size();
-                largestListLocation = i;
+        for(int i=0; i<tableSize; i++){
+            if(this.hashTable[i] != null) {
+                if (this.hashTable[i].size() > largestList) {
+                    largestList = this.hashTable[i].size();
+                    largestListLocation = i;
+                }
             }
         }
         System.out.println("The has address containing the greatest number of distinct words is " + largestListLocation + " and contains " + largestList + " words");
@@ -148,14 +154,14 @@ public class HashTable{
      * finds the longest cluster of items stored in the has table
      */
 
-    public void findLongestCluster(){
+    public void findLongestCluster(int tableSize){
         int tempCount = 0;
         int tempLocationStart = 0;
         int longest = 0;
         int longestLocationStart = 0;
         int longestLocationEnd = 0;
 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < tableSize; i++) {
             if (this.hashTable[i] == null || this.hashTable[i].isEmpty()) {
                 if (longest < tempCount) {
                     longest = tempCount;
@@ -182,9 +188,9 @@ public class HashTable{
      * counts the number of non-empty addresses and finds the load factor of the hash table
      */
 
-    public void countAddresses(){
+    public void countAddresses(int tableSize){
         int numberOfItems = 0;
-        for(int i=0; i<this.size; i++){
+        for(int i=0; i<tableSize; i++){
             if(this.hashTable[i]!=null && !this.hashTable[i].isEmpty()){
                 numberOfItems++;
             }
@@ -197,14 +203,14 @@ public class HashTable{
      * counts the longest empty area in the hash table
      */
 
-    public void longestEmptyArea(){
+    public void longestEmptyArea(int tableSize){
         int tempCount = 0;
         int tempLocationStart = 0;
         int longest = 0;
         int longestLocationStart = 0;
         int longestLocationEnd = 0;
 
-        for (int i = 0; i < 1000; i++) {               //finds the longest empty area
+        for (int i = 0; i < tableSize; i++) {               //finds the longest empty area
             if (this.hashTable[i] != null && !this.hashTable[i].isEmpty()) {
                 if (longest < tempCount) {
                     longest = tempCount;
