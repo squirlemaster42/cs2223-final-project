@@ -107,14 +107,14 @@ public class HashTableTest {
         System.out.println(" |     EmptySpace     |");
         System.out.println("< >==================< >");
         hashT1.longestEmptyArea(tableSizeBase);
-        //hashT2.longestEmptyArea();
+        hashT2.longestEmptyArea(tableSize1);
         hashT3.longestEmptyArea(tableSize2);
 
         //clusters
         System.out.println(" |      Clusters      |");
         System.out.println("< >==================< >");
         hashT1.findLongestCluster(tableSizeBase);
-        //hashT2.findLongestCluster();
+        hashT2.findLongestCluster(tableSize1);
         hashT3.findLongestCluster(tableSize2);
     }
 
