@@ -196,7 +196,7 @@ public class HashTable{
             }
         }
         float loadFactor = (float)numberOfItems/this.size;
-        System.out.printf("There are " + numberOfItems + " non-empty addresses in the table. This makes the load factor " + loadFactor);
+        System.out.println("There are " + numberOfItems + " non-empty addresses in the table. This makes the load factor " + loadFactor);
     }
 
     /**
