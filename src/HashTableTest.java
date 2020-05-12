@@ -33,13 +33,13 @@ public class HashTableTest {
 
     @Test
     public void testWordAddedOnce(){
+        dict.put("a");
+        dict.put("a");
+        dict.put("a");
         assertEquals(1, countWord(dict.get(hash.hash("a")), "a"));
-        assertEquals(1, countWord(dict.get(hash.hash("a")), "a"));
-        assertEquals(1, countWord(dict.get(hash.hash("a")), "a"));
-        assertEquals(1, countWord(dict.get(hash.hash("a")), "a"));
-        assertEquals(1, countWord(dict.get(hash.hash("saltus")), "saltus"));
-        assertEquals(1, countWord(dict.get(hash.hash("saltus")), "saltus"));
-        assertEquals(1, countWord(dict.get(hash.hash("saltus")), "saltus"));
+        dict.put("saltus");
+        dict.put("saltus");
+        dict.put("saltus");
         assertEquals(1, countWord(dict.get(hash.hash("saltus")), "saltus"));
     }
 
