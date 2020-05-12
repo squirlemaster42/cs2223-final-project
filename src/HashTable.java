@@ -60,6 +60,10 @@ public class HashTable{
         }
     }
 
+    /**
+     * Adds a word to the hash table
+     * @param word the word to add
+     */
     public void put(String word){
         int index = hash(word);
         if(hashTable[index] == null){
@@ -70,16 +74,25 @@ public class HashTable{
                 return;
             }
         }
-        //TODO Test add first
         hashTable[index].add(word);
     }
 
+    /**
+     * Gets the LinkedList at a hash key
+     * @param position The position to get
+     * @return The LinkedList
+     */
     public LinkedList get(final int position){
         return hashTable[position];
     }
 
+    /**
+     * Hashes a word
+     * @param word The word to has
+     * @return The hash of the word
+     */
     public int hash(String word){
-        final int C = 123; //TODO Figure out what to use for C
+        final int C = 123;
         int h = 0;
 
         for(int i = 0; i < word.length(); i++){
@@ -92,8 +105,6 @@ public class HashTable{
     public int ord(char c){
         return c;
     }
-
-    //TODO make tests should be working fine but tests may be nice as a "hey we are thorough with our work"
 
     /**
      * Method to read texts from the .txt files
@@ -118,6 +129,11 @@ public class HashTable{
         }
     }
 
+    /**
+     * Splits a line and removed bad chars
+     * @param line The line to filter
+     * @return An array of words
+     */
     String[] splitLine(String line){
         return line.trim().replaceAll("[^a-zA-Z-' ]", "").split(" ");
     }
